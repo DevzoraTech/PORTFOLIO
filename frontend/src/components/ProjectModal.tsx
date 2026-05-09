@@ -126,6 +126,7 @@ export const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
                           src={feature.image} 
                           alt={feature.title}
                           fill
+                          unoptimized
                           className="object-cover transition-transform duration-700 group-hover/img:scale-105"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-text-primary/20 via-transparent to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center">
@@ -201,8 +202,9 @@ export const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
               src={fullscreenImage} 
               alt="Fullscreen preview"
               fill
-              className="object-contain"
+              unoptimized
               priority
+              className="object-contain"
             />
           </div>
         </div>

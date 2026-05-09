@@ -205,7 +205,7 @@ const projects = [
     description:
       'A comprehensive management platform for large-scale salon operations in Tanzania. Features smart inventory control, customer product history analytics, and an e-commerce style purchasing workflow.',
     tags: ['React', 'Supabase', 'TypeScript', 'Tailwind'],
-    image: '/projects/salon-tanzania.png',
+    image: '/projects/screenshots/lifecare/main-display-auths-page.png',
     liveUrl: '#',
     githubUrl: '#',
     featured: false,
@@ -259,6 +259,7 @@ export const Projects = () => {
                       alt={project.title}
                       fill
                       priority={project.featured}
+                      unoptimized
                       className="object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                   ) : (
@@ -334,34 +335,53 @@ export const Projects = () => {
             <div
               key={project.title}
               onClick={() => setSelectedProject(project)}
-              className="glass-card p-6 card-hover group cursor-pointer border border-border/50 hover:border-primary/30"
+              className="glass-card overflow-hidden card-hover group cursor-pointer border border-border/50 hover:border-primary/30 flex flex-col"
             >
-              <div className="flex items-start justify-between mb-3">
-                <div>
-                  <div className="font-mono text-[10px] text-primary font-medium uppercase tracking-wider mb-1">
-                    {project.subtitle}
+              <div className="relative aspect-video bg-surface-muted overflow-hidden">
+                {project.image ? (
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    unoptimized
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                ) : (
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 flex items-center justify-center">
+                    <span className="text-4xl font-display font-bold text-primary/20">{project.title.charAt(0)}</span>
                   </div>
-                  <h3 className="text-lg font-display font-semibold text-text-primary group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
-                </div>
-                <ArrowUpRight
-                  size={16}
-                  className="text-text-muted opacity-0 group-hover:opacity-100 group-hover:text-primary transition-all duration-300"
-                />
+                )}
+                <div className="absolute inset-0 bg-gradient-to-t from-text-primary/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
-              <p className="text-sm text-text-secondary leading-relaxed mb-6 line-clamp-2">
-                {project.description}
-              </p>
-              <div className="flex flex-wrap gap-1.5">
-                {project.tags.slice(0, 3).map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-2 py-0.5 text-[10px] font-mono font-medium text-text-muted bg-surface-muted rounded-md"
-                  >
-                    {tag}
-                  </span>
-                ))}
+              
+              <div className="p-6 flex-1 flex flex-col">
+                <div className="flex items-start justify-between mb-3">
+                  <div>
+                    <div className="font-mono text-[10px] text-primary font-medium uppercase tracking-wider mb-1">
+                      {project.subtitle}
+                    </div>
+                    <h3 className="text-lg font-display font-semibold text-text-primary group-hover:text-primary transition-colors">
+                      {project.title}
+                    </h3>
+                  </div>
+                  <ArrowUpRight
+                    size={16}
+                    className="text-text-muted group-hover:text-primary transition-all duration-300"
+                  />
+                </div>
+                <p className="text-sm text-text-secondary leading-relaxed mb-6 line-clamp-2">
+                  {project.description}
+                </p>
+                <div className="flex flex-wrap gap-1.5 mt-auto">
+                  {project.tags.slice(0, 3).map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-2 py-0.5 text-[10px] font-mono font-medium text-text-muted bg-surface-muted rounded-md"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           ))}
