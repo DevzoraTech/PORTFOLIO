@@ -97,6 +97,7 @@ export const Hero = () => {
                   alt="Mpango Hamza Rahman"
                   fill
                   priority
+                  unoptimized
                   quality={100}
                   className="object-cover object-top grayscale hover:grayscale-0 transition-all duration-700 scale-105 hover:scale-100"
                 />
