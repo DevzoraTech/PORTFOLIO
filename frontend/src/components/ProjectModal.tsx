@@ -2,6 +2,7 @@
 
 import React, { useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { X, Shield, Cpu, Zap, Layers, ExternalLink, ArrowUpRight } from 'lucide-react';
 import { GithubIcon } from './SocialIcons';
 
@@ -12,16 +13,17 @@ interface ProjectModalProps {
 
 export const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
   const [fullscreenImage, setFullscreenImage] = React.useState<string | null>(null);
+  const [mounted, setMounted] = React.useState(false);
 
-  // Prevent body scroll when modal is open
   useEffect(() => {
+    setMounted(true);
     document.body.style.overflow = 'hidden';
     return () => {
       document.body.style.overflow = 'unset';
     };
   }, []);
 
-  if (!project) return null;
+  if (!mounted || !project) return null;
 
   return (
     <>
@@ -82,6 +84,18 @@ export const ProjectModal = ({ project, onClose }: ProjectModalProps) => {
                     <GithubIcon size={20} />
                   </a>
                 </div>
+                {project.deepDive && (
+                  <Link 
+                    href={`/projects/${project.id}`}
+                    onClick={() => {
+                      onClose();
+                    }}
+                    className="flex items-center justify-center gap-3 w-full py-4 bg-primary text-white font-mono text-[11px] font-bold uppercase tracking-[0.2em] rounded-xl hover:bg-primary-dark transition-all group"
+                  >
+                    <span>Read_Full_Case_Study</span>
+                    <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  </Link>
+                )}
                 <div className="p-5 bg-surface-muted border border-border rounded-xl">
                   <div className="text-[10px] font-mono text-text-muted uppercase mb-1 tracking-widest">Core Infrastructure</div>
                   <div className="flex items-center gap-2">

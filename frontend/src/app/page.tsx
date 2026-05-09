@@ -5,6 +5,7 @@ import { About } from "@/components/About";
 import { TechStack } from "@/components/TechStack";
 import { Services } from "@/components/Services";
 import { Projects } from "@/components/Projects";
+import { GlobalFootprint } from "@/components/GlobalFootprint";
 import { Experience } from "@/components/Experience";
 import { Contact } from "@/components/Contact";
 import { LogoIcon } from "@/components/Logo";
@@ -23,6 +24,7 @@ export default function Home() {
         <TechStack />
         <Services />
         <Projects />
+        <GlobalFootprint />
         <Experience />
         <Contact />
       </main>
